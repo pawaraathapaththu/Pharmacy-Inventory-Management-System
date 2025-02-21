@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace E_Medicare_Management
+{
+    public partial class Load : Form
+    {
+       
+
+        public Load()
+        {
+            InitializeComponent();
+            timer1.Start();
+        }
+        int startPoint = 0;
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            startPoint += 1;
+            progressBarpro.Value = startPoint;
+            if (progressBarpro.Value == 100)
+            {
+                progressBarpro.Value = 0;
+                timer1.Stop();
+                Login login = new Login();
+                this.Hide();
+                login.ShowDialog();
+            }
+        }   
+    }
+}
